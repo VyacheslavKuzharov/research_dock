@@ -16,6 +16,7 @@
 /node_modules
 /yarn-error.log
 
+.idea
 config/database.yml
 config/secrets.yml
 .byebug_history
