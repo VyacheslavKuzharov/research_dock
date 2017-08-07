@@ -17,6 +17,11 @@
 /yarn-error.log
 
 .idea
-config/database.yml
-config/secrets.yml
+.DS_Store
+.ruby-gemset
+
+# Ignore application configuration
+/config/database.yml
+/config/secrets.yml
+
 .byebug_history
