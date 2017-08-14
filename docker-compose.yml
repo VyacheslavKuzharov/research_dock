@@ -1,0 +1,28 @@
+version: '2'
+
+volumes:
+  postgres-data:
+    external: false
+
+services:
+  db:
+    image: postgres
+    container_name: research_dock_postgres
+    ports:
+      - '5433:5432'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: research_dock_app
+    volumes:
+      - .:/usr/src/research_dock
+#    entrypoint: ["./stop-server.sh"]
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    env_file:
+      - 'config/application.yml'
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
